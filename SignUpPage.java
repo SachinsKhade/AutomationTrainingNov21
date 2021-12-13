@@ -1,72 +1,124 @@
 package com.PageFactory;
 
-public class SignUpPage {
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import com.generic.BaseTest;
+import com.generic.SeleniumWrapperFunctions;
+
+public class SignUpPage   {
+	private static WebDriver driver = null;
+
+	
+	private BaseTest objBaseTest;  
+	public SignUpPage(BaseTest basetest) {
+		this.objBaseTest=basetest;
+	}
+
+	String actual_url = "https://www.facebook.com./";
+	//Locators
+	By loc_createNewAccount=By.xpath("//a[contains(@id,'u_0_2_')]");
+	By loc_inpFirstame=By.xpath("//div[@id='reg_form_box']//input[@name='firstname']");
+	By loc_inpSurName=By.xpath("//div[@id='reg_form_box']//input[@name='lastname']");
+	By loc_inpMobileNumber=(By.xpath("//div[@id='reg_form_box']//input[@name='reg_email__']"));
+	By loc_Password=(By.xpath("//div[@id='reg_form_box']//input[@type='password']"));
+	By loc_Day=(By.xpath("//select[@id='day']"));
+	By loc_month=(By.xpath("//select[@id='month']"));
+	By loc_year=(By.xpath("//select[@id='year']"));
+	By loc_gender=(By.xpath("//label[normalize-space()='Female']"));
+	
+	
+
 	public void verifySignUpPageIsDispyaed() {
 		System.out.println("Facebook Sign Up Page is Displayed");
-		System.out.println("Test Script Pass");
-		System.out.println("===================================================================");
-	}
-	
-	public void setFirstName(String strFirstNmae){
-		System.out.println("Set First Name :"+ strFirstNmae);
+		objBaseTest.getObjSeleniumWrapperFunctions().click(loc_createNewAccount);
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
 	}
 
-	
-	public void setSurname(String strSurname){
-		System.out.println("Set Surname :"+ strSurname);
-		System.out.println("Test Script Pass");
-		System.out.println("===================================================================");
-	}	
-	
-	
-	
-	public void setMobileNumberOrEmailID(String strMobileNumberOrEmailId){
-		System.out.println("Set Mobile Number Or Email-Id :"+ strMobileNumberOrEmailId);
+	public void setFirstName(String str_FirstName) {
+		System.out.println("First Name is : ");
+		objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpFirstame, str_FirstName);
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
 	}
-	public void setPasswaord(String strPassword)
-	{
-		System.out.println("Set Password :"+ strPassword);
-		System.out.println("Test Script Pass");
-		System.out.println("===================================================================");
-	
-	}
-	
-	public void selectDay(int strDay)
-	{
-		System.out.println("Select Day :"+ strDay);
+
+	public void setSurname(String strSurname) {
+		System.out.print("Set Surname :");
+		
+	objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpSurName, strSurname);
+
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
 	}
-	
-	public void selectMonth(String strMonnths)
-	{
-		System.out.println("Select Month :"+ strMonnths);
+
+public void setMobileNumber(String srrmobile) {
+		System.out.print("Set Mobile Number  :");
+		objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpMobileNumber, srrmobile);
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
 	}
-	
-	public void selectYear(int strMonth)
-	{
-		System.out.println("Select Year :"+ strMonth);
+
+/*public void setEmailID(String strEmailId) {
+		System.out.print("SetEmail-Id :");
+		this.setText(strEmailId);
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
 	}
-	
-	public void selectGender(String strGender)
-	{
-		System.out.println("Select Gender :"+ strGender);
-		System.out.println("Test Script Pass");
-		System.out.println("===================================================================");
-	}
-	
-	public void verifySignUpButton() {
-		System.out.println(" Facebook Sign Up Button is working");
+*/
+public void setPasswaord(String strPassword) {
+		System.out.print("Set Password :");
+objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_Password, strPassword);
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
 
 	}
+
+	public void selectDay(String strday) {
+		
+		System.out.print("Set Day is :");
+		objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_Day);
+		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownIndex(loc_Day, 7);
+
+				System.out.println("Test Script Pass");
+				System.out.println("===================================================================");
+
+			}
+
+	public void selectMonth(String strMonnths) {
+		System.out.println("Select Month :");
+		objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_month);
+		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownIndex(loc_month, 7);
+		System.out.println("Test Script Pass");
+		System.out.println("===================================================================");
+	}
+
+		public void selectYear() {
+		System.out.println("Select Year :" );
+		objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_year);
+		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownValue(loc_year, "2005");
+		System.out.print("Test Script Pass");
+		System.out.println("===================================================================");
+	}
+
+		public void selectGender(String strGender) {
+		System.out.print("Select Gender :");
+		objBaseTest.getObjSeleniumWrapperFunctions().click(loc_gender);
+		System.out.println("Test Script Pass");
+		System.out.println("===================================================================");
+	}
+
+		public void verifySignUpButton()
+		{
+		System.out.println("Facebook Sign Up Button is working");
+		System.out.println("Test Script Pass");
+		System.out.println("===================================================================");
+
+	}
+
 }
