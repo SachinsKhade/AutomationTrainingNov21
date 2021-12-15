@@ -1,15 +1,11 @@
-package com.vst.polymorphism;
+package com.vst.encapsulation;
 
 public class Vehicle {
-	String Vehicle_name="Car";
-	
-	public void show_Vehicle_name()
-	{
-		System.out.println("Nissan Magnite");
-		System.out.println("Hyundai Verna");
-		System.out.println("Tata Punch");
-		System.out.println("Hyundai Venue");
-	}
-	
 
+	 //declaring and initializing a final variable
+	  final int speedlimit = 60;
+	  void controlSpeed() {
+	    //Trying to change the value of the final variable will give an error
+	    //speedlimit = 150;
+}
 }

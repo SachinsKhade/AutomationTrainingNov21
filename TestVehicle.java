@@ -1,13 +1,11 @@
-package com.vst.polymorphism;
+package com.vst.encapsulation;
 
-public class TestVehicle extends Cars {
+public class TestVehicle {
 
 	public static void main(String[] args) {
-		Cars objCars = new Cars();
-		//objCars.show_Vehicle_name();
-		objCars.show_Vehicle();
 		
-
-	}
+			    Vehicle obj = new Vehicle();
+			    obj.controlSpeed();
+			  }
 
 }

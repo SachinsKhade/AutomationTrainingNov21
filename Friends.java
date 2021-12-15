@@ -1,20 +1,16 @@
-package com.vst.encapsulation1;
+package com.vst.encapsulation;
 
-import com.vst.encapsulation.*;
-
-public class Friends extends Facebookstatus {
+public class Friends {
 
 	public static void main(String[] args) {
-		Friends objFriends = new Friends();
-		
-		// protected
-		objFriends.visible_For_Friends_Or_Friends_Of_Friends();
-		
-		// can not access Default method outsite package
-		// objFriends.visible_for_frinds();
-		
+		Facebookstatus objFacebookstatus =new Facebookstatus();
+		//protected
+		objFacebookstatus.visible_For_Friends_Or_Friends_Of_Friends();
+		//Default
+		objFacebookstatus.visible_for_frinds();
 		// Public
-		objFriends.visible_For_Public();
+		objFacebookstatus.visible_For_Public();
+		
 
 	}
 
