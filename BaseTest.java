@@ -20,8 +20,9 @@ public class BaseTest {
 			driver = new ChromeDriver();
 			
 			objSeleniumWrapperFunctions= new SeleniumWrapperFunctions(this);
-		
+			
 			this.setObjSeleniumWrapperFunctions(objSeleniumWrapperFunctions);
+			
 			driver.get(strurl);
 			System.out.println("open URL  :" + strurl);
 			driver.manage().window().maximize();
@@ -45,8 +46,6 @@ public class BaseTest {
 		this.objSeleniumWrapperFunctions = objSeleniumWrapperFunctions;
 	}
 	
-	
-
 	public void tearDown() {
 
 		{

@@ -34,10 +34,10 @@ Select select=new Select(getElement(Locator));
 select.selectByVisibleText(value);
 }
 
-public static void doSelectByDropDownIndex(By Locator,int strday)
+public static void doSelectByDropDownIndex(By Locator,String strday)
 { 
 Select select=new Select(getElement(Locator));
-select.selectByIndex(strday);
+select.selectByVisibleText(strday);
 }
 
 public static void doSelectByDropDownValue(By Locator,String  value)
@@ -50,4 +50,6 @@ public void click(By locator)
 	objBaseTest.getDriver().findElement(locator).click();
 	System.out.println("Click  : ");
 }
+
+
 }

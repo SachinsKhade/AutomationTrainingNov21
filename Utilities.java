@@ -1,16 +1,16 @@
 package com.generic;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Utilities {
 
-	// Random String First Name
+// Random String First Name
 
 	public String getRandomFirstName() {
 		String names[] = { "Sachin", "Amol", "Nitin", "Vaibhav", "Sumit" };
 		String strname = (names[new Random().nextInt(names.length)]);
 		return strname;
-
 	}
 //Random Surname
 	public String getRandomSurname() {
@@ -51,7 +51,11 @@ public class Utilities {
 
 	}
 
-	public static int getRandomYear() {
+	
+	
+	
+	
+	/*public static int getRandomYear() {
 		Random objrandom = new Random();
 		int intMaxYear = 2017;
 		int intMinYear = 1905;
@@ -60,20 +64,67 @@ public class Utilities {
 
 	}
 
-	public String getRandomMonths() {
+	/*public String getRandomMonths() {
 		String Month_names[] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aus", "Sep", "Oct", "Nov", "Dec" };
 		String str_Month_Name = (Month_names[new Random().nextInt(Month_names.length)]);
 		return str_Month_Name;
 
 	}
+	*/
+	
+
+	public String GetBirthMonth() {
+
+		String[] strValues = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+
+		Random monthValue = new Random();
+
+		int randomMonth = monthValue.nextInt(strValues.length);
+		String strGetBirthMonth;
+		strGetBirthMonth = strValues[randomMonth];
+
+		return strGetBirthMonth;
+
+	}
+	public String getBirthYear() {
+
+
+
+		int intBirthYear = ThreadLocalRandom.current().nextInt(1905, 2021);
+
+
+		String strGetBirthYear;
+		strGetBirthYear = String.valueOf(intBirthYear);
+
+		return strGetBirthYear;
+		
+		
+	}
 	
 	// Random String
 
-	public String getRandomGender() {
+	/*public String getRandomGender() {
 		String names[] = { "Male", "Female" };
 		String strname = (names[new Random().nextInt(names.length)]);
 		return strname;
 
+	}
+	
+	*/
+	
+	
+	public String getGender() {
+
+		String[] strValues = { "Male", "Female" };
+
+		Random genderValue = new Random();
+
+		int randomGender = genderValue.nextInt(strValues.length);
+		String strGetGender;
+		strGetGender = strValues[randomGender];
+
+		return strGetGender;
+		
 	}
 	//Random String
 	public String getRandomStrings(int length){
