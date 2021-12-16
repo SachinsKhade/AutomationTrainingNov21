@@ -13,8 +13,6 @@ import com.generic.SeleniumWrapperFunctions;
 
 public class SignUpPage   {
 	private static WebDriver driver = null;
-
-	
 	private BaseTest objBaseTest;  
 	public SignUpPage(BaseTest basetest) {
 		this.objBaseTest=basetest;
@@ -30,7 +28,8 @@ public class SignUpPage   {
 	By loc_Day=(By.xpath("//select[@id='day']"));
 	By loc_month=(By.xpath("//select[@id='month']"));
 	By loc_year=(By.xpath("//select[@id='year']"));
-	By loc_gender=(By.xpath("//label[normalize-space()='Female']"));
+	By loc_gender_Female=(By.xpath("//label[normalize-space()='Female']"));
+	By loc_inpMaleGender = By.xpath("//*[contains(text(),'Male')]");
 	
 	
 
@@ -83,7 +82,8 @@ objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_Password, strPassword);
 		
 		System.out.print("Set Day is :");
 		objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_Day);
-		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownIndex(loc_Day, 7);
+		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownIndex(loc_Day, strday);
+		System.out.println(strday);
 
 				System.out.println("Test Script Pass");
 				System.out.println("===================================================================");
@@ -91,27 +91,51 @@ objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_Password, strPassword);
 			}
 
 	public void selectMonth(String strMonnths) {
-		System.out.println("Select Month :");
+		System.out.println("Select Month :"+strMonnths);
 		objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_month);
-		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownIndex(loc_month, 7);
+		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownIndex(loc_month, strMonnths);
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
 	}
+	
 
-		public void selectYear() {
+
+		public void selectYear(String strYears) {
 		System.out.println("Select Year :" );
 		objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_year);
-		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownValue(loc_year, "2005");
+		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownValue(loc_year, strYears);
 		System.out.print("Test Script Pass");
 		System.out.println("===================================================================");
+		
 	}
 
-		public void selectGender(String strGender) {
+		/*public void selectGender(String strGender) {
 		System.out.print("Select Gender :");
 		objBaseTest.getObjSeleniumWrapperFunctions().click(loc_gender);
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
 	}
+	*/
+		
+
+
+		public void selectGender(String strGetGender) {
+			
+			
+
+			String strAllGender[] = { "Custom", "Male", "Female" };
+
+
+				if (strGetGender.equalsIgnoreCase("Male"))
+
+					objBaseTest.getObjSeleniumWrapperFunctions().click(loc_inpMaleGender);
+
+				else if (strGetGender.equalsIgnoreCase("Female"))
+
+					objBaseTest.getObjSeleniumWrapperFunctions().click(loc_gender_Female
+							);
+
+		}
 
 		public void verifySignUpButton()
 		{
