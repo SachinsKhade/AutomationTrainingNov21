@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Gmail App Test Suite">
+<test name="Send Mail Test Case">
+<classes>
+<class name ="TestNG.SendMailTest"></class>
+</classes>
+</test>
+<test name="Received Mail Test Case">
+<classes>
+<class name ="TestNG.ReceivedMail"></class>
+</classes>
+</test>
+</suite>
