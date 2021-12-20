@@ -15,8 +15,10 @@ public class BaseTest {
 	public void initializedWebEnvironment() {
 
 		{
-			System.setProperty("webdriver.chrome.driver",
-					"C:\\Users\\lenovo\\workspace\\FacebookTAF\\ExternalResources\\Drivers\\chromedriver.exe");
+			//System.setProperty("webdriver.chrome.driver",
+					//"C:\\Users\\lenovo\\workspace\\FacebookSignUPTAF\\src\\main\\resources\\drivers\\chromedriver.exe");
+			
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/main/resources/drivers/chromedriver.exe");
 			driver = new ChromeDriver();
 			
 			objSeleniumWrapperFunctions= new SeleniumWrapperFunctions(this);

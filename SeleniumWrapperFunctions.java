@@ -13,12 +13,22 @@ public SeleniumWrapperFunctions(BaseTest basetest)
 	this.objBaseTest=basetest;
 }
 	
-public String setText(By locator ,String strInputValue )
+public boolean setText(By locator ,String strInputValue )
 {
-	objBaseTest.getDriver().findElement(locator).sendKeys(strInputValue);
+	/*objBaseTest.getDriver().findElement(locator).sendKeys(strInputValue);
 	System.out.println(strInputValue);
 	
-	return strInputValue;
+	return false;*/
+	
+	try {
+		objBaseTest.getDriver().findElement(locator).sendKeys(strInputValue);
+		return true;
+	} catch (Exception exception) {
+		System.out.println("got exception :"+exception.getMessage());
+		exception.printStackTrace();
+		return false;
+		
+	}
 	
 }
 
@@ -51,5 +61,38 @@ public void click(By locator)
 	System.out.println("Click  : ");
 }
 
+public void getText(By locator)
+{
+	objBaseTest.getDriver().findElement(locator).getText();
+}
 
+public boolean setDropDown(By locator,String strDate)
+{
+try{
+WebElement dropDown=objBaseTest.getDriver().findElement(locator);
+Select selectDropDown=new Select(dropDown);
+selectDropDown.selectByVisibleText(strDate);
+return true;
+}
+catch(Exception exception)
+{
+System.out.println("I got exception : "+exception.getMessage());
+exception.printStackTrace();
+return false;
+}
+}
+
+public boolean setRadioButton(By locator)
+{
+try{
+objBaseTest.getDriver().findElement(locator).click();
+return true;
+}
+catch(Exception exception)
+{
+System.out.println("I got exception : "+exception.getMessage());
+exception.printStackTrace();
+return false;
+}
+}
 }

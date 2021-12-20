@@ -6,19 +6,18 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.PageFactory.SignUpPage;
 import com.generic.BaseTest;
 import com.generic.SeleniumWrapperFunctions;
 import com.generic.Utilities;
+import com.pageFactory.SignUpPage;
 
 public class SignupTest extends BaseTest{
 	static WebDriver driver =null;
-	SignUpPage objSignUpPage;
+	com.pageFactory.SignUpPage objSignUpPage;
 	Utilities objUtilities;
 	@BeforeClass
 	public void beforeMainMethod()
 	{
-		
 		this.initializedWebEnvironment();
 		objSignUpPage = new SignUpPage(this);
 		objUtilities = new Utilities();
@@ -31,7 +30,7 @@ public class SignupTest extends BaseTest{
 		
 	}
 @Test
-	public  void  TCID001() {
+	public  void  TCID001_FbSignUp() {
 	objSignUpPage.verifySignUpPageIsDispyaed();
 	String strFirstNmae = objUtilities.getRandomFirstName()+objUtilities.getRandomStrings(4);
 	objSignUpPage.setFirstName(strFirstNmae);

@@ -1,4 +1,4 @@
-package com.PageFactory;
+package com.pageFactory;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import com.generic.BaseTest;
 import com.generic.SeleniumWrapperFunctions;
@@ -17,7 +18,6 @@ public class SignUpPage   {
 	public SignUpPage(BaseTest basetest) {
 		this.objBaseTest=basetest;
 	}
-
 	String actual_url = "https://www.facebook.com./";
 	//Locators
 	By loc_createNewAccount=By.xpath("//a[contains(@id,'u_0_2_')]");
@@ -31,26 +31,40 @@ public class SignUpPage   {
 	By loc_gender_Female=(By.xpath("//label[normalize-space()='Female']"));
 	By loc_inpMaleGender = By.xpath("//*[contains(text(),'Male')]");
 	
+	By loc_faceBookSignUPTest=By.xpath("//div[text()='Sign Up']");
+
 	
 
 	public void verifySignUpPageIsDispyaed() {
-		System.out.println("Facebook Sign Up Page is Displayed");
+		objBaseTest.getObjSeleniumWrapperFunctions().click(loc_createNewAccount);
+		String strAccountText=objBaseTest.getDriver().findElement(loc_faceBookSignUPTest).getText();
+		Assert.assertTrue(strAccountText.equals("Sign Up" ));
+		
+		/*if(strAccountText.equals("Sign Up"))
+		{
+			System.out.println("Test Pass");
+		}else{
+			System.out.println("Test Fail");
+		}*/
+			
+		/*System.out.println("Facebook Sign Up Page is Displayed");
 		objBaseTest.getObjSeleniumWrapperFunctions().click(loc_createNewAccount);
 		System.out.println("Test Script Pass");
-		System.out.println("===================================================================");
+		System.out.println("===================================================================");*/
 	}
 
 	public void setFirstName(String str_FirstName) {
 		System.out.println("First Name is : ");
-		objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpFirstame, str_FirstName);
+		Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpFirstame, str_FirstName));
+		//objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpFirstame, str_FirstName);
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
 	}
 
 	public void setSurname(String strSurname) {
 		System.out.print("Set Surname :");
-		
-	objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpSurName, strSurname);
+		Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpSurName, strSurname));
+	//objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpSurName, strSurname);
 
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
@@ -58,7 +72,8 @@ public class SignUpPage   {
 
 public void setMobileNumber(String srrmobile) {
 		System.out.print("Set Mobile Number  :");
-		objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpMobileNumber, srrmobile);
+		Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpMobileNumber, srrmobile));
+		//objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_inpMobileNumber, srrmobile);
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
 	}
@@ -72,7 +87,8 @@ public void setMobileNumber(String srrmobile) {
 */
 public void setPasswaord(String strPassword) {
 		System.out.print("Set Password :");
-objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_Password, strPassword);
+		Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_Password, strPassword));
+//objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_Password, strPassword);
 		System.out.println("Test Script Pass");
 		System.out.println("===================================================================");
 
@@ -81,31 +97,37 @@ objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_Password, strPassword);
 	public void selectDay(String strday) {
 		
 		System.out.print("Set Day is :");
-		objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_Day);
+
+		System.out.println("Date is : " + strday);
+		Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().setDropDown(loc_Day,strday));
+		/*objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_Day);
 		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownIndex(loc_Day, strday);
 		System.out.println(strday);
 
 				System.out.println("Test Script Pass");
 				System.out.println("===================================================================");
-
+*/
 			}
 
 	public void selectMonth(String strMonnths) {
 		System.out.println("Select Month :"+strMonnths);
-		objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_month);
+		//System.out.println("Date is : " + strday);
+		Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().setDropDown(loc_month,strMonnths));
+		/*objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_month);
 		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownIndex(loc_month, strMonnths);
 		System.out.println("Test Script Pass");
-		System.out.println("===================================================================");
+		System.out.println("===================================================================");*/
 	}
 	
 
 
 		public void selectYear(String strYears) {
 		System.out.println("Select Year :" );
-		objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_year);
+		Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().setDropDown(loc_year,strYears));
+		/*objBaseTest.getObjSeleniumWrapperFunctions().getElement(loc_year);
 		objBaseTest.getObjSeleniumWrapperFunctions().doSelectByDropDownValue(loc_year, strYears);
 		System.out.print("Test Script Pass");
-		System.out.println("===================================================================");
+		System.out.println("===================================================================");*/
 		
 	}
 
@@ -119,7 +141,7 @@ objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_Password, strPassword);
 		
 
 
-		public void selectGender(String strGetGender) {
+	/*	public void selectGender(String strGetGender) {
 			
 			
 
@@ -136,6 +158,23 @@ objBaseTest.getObjSeleniumWrapperFunctions().setText(loc_Password, strPassword);
 							);
 
 		}
+		*/
+		
+		public void selectGender(String strGender) {
+
+			if (strGender.equalsIgnoreCase("Male"))
+			{
+			Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().setRadioButton(loc_inpMaleGender));
+			}
+			else if(strGender.equalsIgnoreCase("Female"))
+			{
+			Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().setRadioButton(loc_gender_Female));
+			}
+			else
+			{
+			System.out.println("Invalid Gender");
+			}
+			}
 
 		public void verifySignUpButton()
 		{
