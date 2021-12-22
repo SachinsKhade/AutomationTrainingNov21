@@ -1,25 +1,27 @@
-package com.vst.polymorphism;
-
+package com.collection;
+import java.util.ArrayList; 
 public class Employee {
 
-	int emp_id;
-	String name;
-	static String Department;
-	float fee;
-	private float salary;
-
-	Employee(int emp_id, String name, String Department) {
-		this.emp_id = emp_id;
-		this.name = name;
-		this.Department = Department;
-	}
-
-	Employee(int emp_id, String name, String course, float salary) {
-		this(emp_id, name, Department);// reusing constructor
-		this.salary = salary;
-	}
-
-	void display() {
-		System.out.println(emp_id + " " + name + " " + Department + " " + salary);
-	}
+  int EmployeeNo; 
+  String name, address; 
+ Employee(int eNo, String name, String address)
+ { 
+   this.EmployeeNo = eNo; 
+   this.name = name; 
+   this.address = address; 
+ } 
+public Employee() 
+{
 }
+// Display all employees data. 
+   void displayData(ArrayList<Employee> list)
+   { 
+     System.out.println("Employee Detail"); 
+     for(Employee emp: list )
+     { 
+       System.out.println("Employee number: " +emp.EmployeeNo); 
+       System.out.println("Employee Name: " +emp.name); 
+       System.out.println("Employee Address: " +emp.address); 
+     } 
+    } 
+  }
