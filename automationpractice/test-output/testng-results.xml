@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="12786" started-at="2021-12-23T15:58:43Z" finished-at="2021-12-23T15:58:56Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="12786" started-at="2021-12-23T15:58:43Z" finished-at="2021-12-23T15:58:56Z">
+      <class name="com.scripts.loginLogoutTest">
+        <test-method status="PASS" signature="beforeMainMethod()[pri:0, instance:com.scripts.loginLogoutTest@9629756]" name="beforeMainMethod" is-config="true" duration-ms="9859" started-at="2021-12-23T21:28:43Z" finished-at="2021-12-23T21:28:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMainMethod -->
+        <test-method status="PASS" signature="TCID001_verifyLoginFunctionality()[pri:0, instance:com.scripts.loginLogoutTest@9629756]" name="TCID001_verifyLoginFunctionality" duration-ms="2816" started-at="2021-12-23T21:28:53Z" finished-at="2021-12-23T21:28:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TCID001_verifyLoginFunctionality -->
+        <test-method status="PASS" signature="TCID002_verifyMyAccountPageFunctionality()[pri:0, instance:com.scripts.loginLogoutTest@9629756]" name="TCID002_verifyMyAccountPageFunctionality" duration-ms="86" started-at="2021-12-23T21:28:56Z" finished-at="2021-12-23T21:28:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TCID002_verifyMyAccountPageFunctionality -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.scripts.loginLogoutTest@9629756]" name="afterMethod" is-config="true" duration-ms="1" started-at="2021-12-23T21:28:56Z" finished-at="2021-12-23T21:28:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- com.scripts.loginLogoutTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
