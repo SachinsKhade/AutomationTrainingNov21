@@ -29,7 +29,9 @@ public class myAccoutPage {
 
 	public void verifyUserLogedInSuccessfully()
 	{
-		Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().isDisplayed(loc_btnSignOut));
+		//objBaseTest.getObjSeleniumWrapperFunctions().setExplicitlyWait(loc_btnSignOut);
+		//Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().isDisplayed(loc_btnSignOut));
+		Assert.assertTrue(objBaseTest.getObjSeleniumWrapperFunctions().fluentWait(loc_btnSignOut));
 	}
 	 
 	public void verifyWomenTabIsDisplayedOnMyAccountPage()

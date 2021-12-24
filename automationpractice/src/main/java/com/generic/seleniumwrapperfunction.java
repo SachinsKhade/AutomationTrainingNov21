@@ -1,14 +1,31 @@
 package com.generic;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.time.Duration;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import com.google.common.base.Function;
 public class seleniumwrapperfunction {
 
 	private static BaseTest objBaseTest;
-
+	//WebDriverWait wait = new WebDriverWait(WebDriverRefrence,TimeOut);
+	protected WebDriver driver;
 	public seleniumwrapperfunction(BaseTest basetest) {
 		this.objBaseTest = basetest;
 	}
@@ -229,6 +246,52 @@ public class seleniumwrapperfunction {
 	return false;
 	}
 	}
+	
+	
+	public void setImplicitlyWait(int waitTime)
+	{
+		objBaseTest.getDriver().manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);
+	}
+	
+	
+	public static WebElement setExplicitlyWait( By locator)
+	{
+		objBaseTest.getDriver();
+		 {
+			 WebElement webElement;
+			
+			try {
+			webElement = new WebDriverWait(objBaseTest.getDriver(), 10, 20).until(ExpectedConditions.visibilityOfElementLocated(locator));
+			}catch (Exception e) {
+			System.out.println("Element has not been visible, searched by element"+e);
+			return null;
+			}
+			return webElement;
+			}
+	}
+	
+	public boolean fluentWait(By locator)
+	{
+
+	try
+	{
+	Wait<WebDriver> objWait=new FluentWait<WebDriver>(objBaseTest.getDriver())
+	.withTimeout(Duration.ofSeconds(10))
+	.pollingEvery(Duration.ofSeconds(2))
+	.withMessage("Your desired element is not found")
+	.ignoring(NoSuchElementException.class);
+	objWait.until(ExpectedConditions.presenceOfElementLocated(locator));
+	return true;
+
+	}
+	catch(Exception exception)
+	{
+	System.out.println("I got exception : "+exception.getMessage());
+	return false;
+	}
+	}
+
+	
 }
 
 
