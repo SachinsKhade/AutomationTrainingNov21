@@ -78,7 +78,7 @@ public class BaseTest {
 		}
 	}
 
-	public void failedTestCases(String testMethodName) {
+	/*public void failedTestCases(String testMethodName) {
 
 		File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
@@ -87,19 +87,26 @@ public class BaseTest {
 					new File("/Users/lenovo/workspace/automationpractice/src/test/resources/AllImages/" + testMethodName
 							+ ".jpg"));
 			
+			
+			
+			//System.setProperty("org.uncommons.reportng.escape-output","false");
+			//Reporter.log("<a href="+destinationFile+">Screenshot link</a>");
+
+
 
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	/*
 	 * public static String getScreenShot(WebDriver driver) { TakesScreenshot
 	 * ts=(TakesScreenshot) driver; File src
 	 * =ts.getScreenshotAs(OutputType.FILE); String path =
 	 * System.getProperty("user.dir")+"/AllImages/"+System.currentTimeMillis()+
-	 * ".jpg"; File destination = new File(path);
+	 * ".jpg";
+	 *  File destination = new File(path);
 	 * 
 	 * try { FileUtils.copyFile(src, destination); } catch (IOException e) {
 	 * System.out.println("Capture failed "+e.getMessage()); } return path;
@@ -107,4 +114,18 @@ public class BaseTest {
 	 * }
 	 * 
 	 */
+	
+	public void getScreenShotPath(String testCaseName) throws IOException
+	{
+	TakesScreenshot screenShot =(TakesScreenshot)getDriver();
+	System.out.println(screenShot);
+	File source=screenShot.getScreenshotAs(OutputType.FILE);
+	String destinationFile=System.getProperty("user.dir")+"\\screenshots\\"+testCaseName+".png";
+	System.out.println(destinationFile);
+	FileUtils.copyFile(source,new File(destinationFile));
+
+	System.setProperty("org.uncommons.reportng.escape-output","false");
+	Reporter.log("<a href="+destinationFile+">Screenshot link</a>");
+
+	}
 }
