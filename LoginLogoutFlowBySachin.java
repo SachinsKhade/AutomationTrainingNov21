@@ -51,6 +51,12 @@ public class LoginLogoutFlowBySachin {
 	
 	@Step("Login into the system.")
 	public void doLoginWithExcelParameter() {
+		/*testData=objPojo.getObjUtilities().dpString("myName");
+		System.out.println("my Name is :"+testData);
+		testData=objPojo.getObjUtilities().dpString("myLastName");
+		System.out.println("my Last Is :"+testData);
+		*/
+		objLoginPageBySachin.verifyUserIsOneMedicareSyncLoginPage();
 		testData = objPojo.getObjUtilities().dpString("userid");
 		if (!testData.equals(""))
 			objLoginPageBySachin.setUserID(testData);
@@ -61,6 +67,35 @@ public class LoginLogoutFlowBySachin {
 		if(!testData.equals(""))
 			objLoginPageBySachin.selectLoginWithOptions(testData);
 		objLoginPageBySachin.clickGetStarted();
+		if(objLoginPageBySachin.isInvalidPasswordErrorMsgDisplayed())
+		{
+			objPojo.getObjUtilities().logReporter("Getting Invalid Password Error Mesaage" , true);
+		}
+		
+		else if(objLoginPageBySachin.isUsernameFieldIsRequired()&&objLoginPageBySachin.isPasswordFieldIsRequiredMsgDisplyed()){
+			objPojo.getObjUtilities().logReporter("Getting Username and Password Password Error Mesaage", true);
+			
+		}
+		
+		else if(objLoginPageBySachin.isInvalidUsernameOrPasswordErrorMsgDisplayed()){
+			objPojo.getObjUtilities().logReporter("Getting Invalid Username or "
+					+ "Password Error Mesaage", true);
+			
+		}else if(objLoginPageBySachin.isPasswordFieldIsRequiredMsgDisplyed())
+		{
+			objPojo.getObjUtilities().logReporter("Getting the password field is required", true);
+		}
+		
+		else if(objLoginPageBySachin.isUsernameFieldIsRequired())
+		{
+			objPojo.getObjUtilities().logReporter("Getting the username field is required", true);
+		}
+		
+		
+		
+		
+		
+		else{
 		objSelectRolePopUpPage.verifySelectRolePopupPageIsDisplayed();
 		testData = objPojo.getObjUtilities().dpString("SelectUserRole");
 		if(!testData.equals(""))
@@ -70,12 +105,15 @@ public class LoginLogoutFlowBySachin {
 		testData = objPojo.getObjUtilities().dpString("loginTitle");
 		if(!testData.equals(""))
 			objLoginPageBySachin.verifyUserLoggedIn(testData);
+			
+		}	
 	}
 	
 	@Step("Logout eMedicareSync application")
 	public void doLogout(){
 		if(objDashboardPage.isCloseCrossButtonIsDisplayed())
-			objDashboardPage.clickCrossCloseButton();
+		
+			//objDashboardPage.clickCrossCloseButton();
 			
 		objDashboardPage.clickUserIcon();
 		if(objDashboardPage.isLogOffPopUpIsDisplayed()){
