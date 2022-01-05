@@ -1,0 +1,64 @@
+ public void verifyColourOfCell(String excelFileName,String strSheetName)
+	    {
+
+	        //Excel file load
+	        //String strTestData="";
+	        int lastRowNum=0;
+	        XSSFRow row;
+	        String excelFilePath=System.getProperty("user.dir")+"/src/test/resources/downloads/"+excelFileName+".xlsx";
+	        try {
+	            FileInputStream excelFile=new FileInputStream(excelFilePath);
+	            workbook=new XSSFWorkbook(excelFile);
+	            sheet=workbook.getSheet(strSheetName);
+
+	            lastRowNum=sheet.getLastRowNum();
+	            System.out.println(lastRowNum);
+
+	        } catch (Exception e) {
+
+	            System.out.println("While loading excel getting error >>"+e.getMessage());
+	            e.printStackTrace();
+	        }
+
+	        for(int intRow=1;intRow<lastRowNum;intRow++)
+	        {
+	            row = (XSSFRow) sheet.getRow(intRow);
+	            for(int intCol=0;intCol<row.getLastCellNum();intCol++)
+	            {
+	                //strTestData=ExcelReaderUtility.getCellDataFromExcel(intRow, intCol);
+	                //System.out.println("Print Test Data===>"+strTestData);
+	                try {
+	                    if(!sheet.getRow(intRow).getCell(intCol).equals(""))
+	                    cell=sheet.getRow(intRow).getCell(intCol);
+	                    //String strCellData=cell.getStringCellValue();
+	                //System.out.println("cell data : "+strCellData);
+
+	                     XSSFCellStyle cs = cell.getCellStyle();
+	                     String strColourCode = cs.getFillForegroundColorColor().getARGBHex();
+	                    // System.out.println("Cell Colour Code : "+strColourCode);
+	                     
+	                     if(strColourCode.equals("FFFF7F50"))
+	                     {
+	                     System.out.println("Highlighted Excel Cell at "+intRow+" "+intCol+" Color code : "+strColourCode);
+	                     Assert.assertEquals(strColourCode,"FFFF7F50");
+	                     //objPojo.getObjUtilities().logReporter("Cell color validate", "FFFF7F50", strColourCode, true);
+	                    // Assert.assertEquals(actual, expected);
+	                     }
+	                     else if(strColourCode.equals("FFFFC0CB"))
+	                     {
+	                     System.out.println("Highlighted Excel Cell at "+intRow+" "+intCol+" Color code : "+strColourCode);
+	                     Assert.assertEquals(strColourCode,"FFFFC0CB");
+	                     }
+	                     /*if(!strColourCode.contains(""))
+	                     System.out.println(cs.getFillForegroundColorColor().getARGBHex());*/
+
+	                } catch (Exception e) {
+	                    /*System.out.println("Getting error while getting cell colour >>"+e.getMessage());
+	                    e.printStackTrace();*/
+
+	                }
+	            }
+	        }
+	    }
+	
+}
